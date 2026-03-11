@@ -15,6 +15,7 @@ def display_valuation_stats(symbol: str):
         if st.button("Fetch Valuation Stats"):
 
             years_low, pe_25, pe_75 = get_valuation_stats(symbol, months)
+            st.write("DEBUG:", years_low, pe_25, pe_75)
 
             if years_low is None:
                 st.error("Could not fetch data.")
