@@ -8,7 +8,7 @@ from fetch_data import can_fetch_data, enrich_assets
 from portfolio_value import summarize_assets, combine_assets, calculate_portfolio_total, assign_weights
 from user_preferences import get_user_preferences, UserPreference
 from portfolio_view import get_portfolio_df, show_portfolio_table, show_google_sheet_data_table, show_market_data_table, show_allocation_pie_chart
-from pe_percentile import display_pe_percentiles
+from pe_percentile import display_valuation_stats
 
 
 # --- Streamlit Page Config ---
@@ -69,7 +69,7 @@ with tab3:
         st.success("🔓 Password Correct! Checking live data availability...")
         if can_fetch_data():  # ✅ Check fetch readiness
             with st.spinner("Fetching data OK"):
-                pe_p25, pe_p75 = display_pe_percentiles(symbol)
+                years_low, pe_p25, pe_p75 = display_valuation_stats(symbol)
         else:
             st.error("❌ Unable to fetch live data. Falling back to static data.")
     else:
