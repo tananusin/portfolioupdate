@@ -42,7 +42,7 @@ portfolio_unsum_df = get_portfolio_df(assets)
 # --- Portfolio Calculations ---
 assets = summarize_assets(assets)
 total_thb = calculate_portfolio_total(assets)
-assign_weights(assets, total_thb)
+current_portfolio_mdd= assign_weights(assets, total_thb)
 
 
 # --- Convert to DataFrame ---
