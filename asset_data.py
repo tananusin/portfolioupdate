@@ -13,21 +13,43 @@ class AssetData:
     fx_rate: Optional[float] = None
     asset_class: Optional[str] = None
     mdd: Optional[float] = None
-
+    
     # Portfolio Value Variables
     value_local: Optional[float] = None
     value_thb: Optional[float] = None
     weight: Optional[float] = None
 
-    # Price Change
+    # Assumption Calculated from MDD
+    rebound: Optional[float] = None 
+    cagr: Optional[float] = None
+    dividend_yield_offset: Optional[float] = None
+    
+    # Proportion
+    mdd_inverse: Optional[float] = None
+    target_in_class: Optional[float] = None
+    target: Optional[float] = None
+    mdd_contribution: Optional[float] = None
+
+    # Position Size
+    drift: Optional[float] = None
+    drift_relative: Optional[float] = None
+    position_size: Optional[str] = None
+
+    # Price Signal
     high_52w: Optional[float] = None
     low_52w: Optional[float] = None
     low_years: Optional[float] = None
+    drop_52w: Optional[float] = None
+    gain_52w: Optional[float] = None
+    gain_years: Optional[float] = None
+    price_signal: Optional[str] = None
 
     # P/E Signal
     pe_ratio: Optional[float] = None                    # Trailing P/E ratio
     pe_p25: Optional[float] = None                      # 25th percentile P/E
     pe_p75: Optional[float] = None                      # 75th percentile P/E
+    pe_signal: Optional[str] = None
 
     # Dividend Yield Signal
     dividend_yield: Optional[float] = None              # Trailing dividend yield
+    dividend_yield_signal: Optional[str] = None
