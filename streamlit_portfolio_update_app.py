@@ -70,9 +70,9 @@ with tab3:
         if can_fetch_data():  # ✅ Check fetch readiness
             with st.spinner("Fetching data OK"):
                 years_low, pe_p25, pe_p75 = display_valuation_stats(symbol)
-                st.write(f"**Years Low Price:** {years_low:.2f}")
-                st.write(f"**25th Percentile P/E:** {pe_25:.2f}")
-                st.write(f"**75th Percentile P/E:** {pe_75:.2f}")
+                st.write(f"**Years Low Price:** {years_low}")
+                st.write(f"**25th Percentile P/E:** {pe_25}")
+                st.write(f"**75th Percentile P/E:** {pe_75}")
         else:
             st.error("❌ Unable to fetch live data. Falling back to static data.")
     else:
