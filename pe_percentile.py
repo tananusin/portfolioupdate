@@ -20,6 +20,15 @@ def display_valuation_stats(symbol: str):
                 st.error("Could not fetch data.")
                 return None, None, None
 
+            # --- Display ---
+            st.write(f"**Years Low Price:** {years_low:.2f}")
+
+            if pe_25 is not None:
+                st.write(f"**25th Percentile P/E:** {pe_25:.2f}")
+
+            if pe_75 is not None:
+                st.write(f"**75th Percentile P/E:** {pe_75:.2f}")
+
             return years_low, pe_25, pe_75
 
         else:
