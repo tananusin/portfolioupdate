@@ -4,8 +4,7 @@ import pandas as pd
 
 from asset_data import AssetData
 from load_assets import load_assets_from_google_sheet
-from fetch_yfinance import can_fetch_data
-from fetch_data import enrich_assets
+from fetch_data import can_fetch_data, enrich_assets
 from portfolio_value import summarize_assets, combine_assets, calculate_portfolio_total, assign_weights
 from user_preferences import get_user_preferences, UserPreference
 from portfolio_view import get_portfolio_df, show_portfolio_table, show_google_sheet_data_table, show_allocation_pie_chart
