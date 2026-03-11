@@ -1,4 +1,5 @@
-# pe_percentile.pyimport streamlit as st
+# pe_percentile.py
+import streamlit as st
 from fetch_data import valuation_stats
 
 def display_valuation_stats(symbol: str):
