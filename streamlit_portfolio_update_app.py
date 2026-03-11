@@ -7,7 +7,7 @@ from load_assets import load_assets_from_google_sheet
 from fetch_data import can_fetch_data, enrich_assets
 from portfolio_value import summarize_assets, combine_assets, calculate_portfolio_total, assign_weights
 from user_preferences import get_user_preferences, UserPreference
-from portfolio_view import get_portfolio_df, show_portfolio_table, show_google_sheet_data_table, show_allocation_pie_chart
+from portfolio_view import get_portfolio_df, show_portfolio_table, show_google_sheet_data_table, show_market_data_table, show_allocation_pie_chart
 from pe_percentile import display_pe_percentiles
 
 
@@ -60,20 +60,20 @@ with tab2:
     show_google_sheet_data_table(portfolio_df)
 with tab3:
     st.subheader("💹 Market Data")
-    # st.caption("ℹ️ Fetchable data. When using live data mode, copy this data to your Google Sheet to update static data.")
-    # show_market_data_table(portfolio_unsum_df)
-    # st.subheader("🧮 P/E Ratio Percentiles")
-    # symbol = st.text_input("Enter stock symbol (e.g., AAPL)", value="AAPL")
+    st.caption("ℹ️ Fetchable data. When using live data mode, copy this data to your Google Sheet to update static data.")
+    show_market_data_table(portfolio_unsum_df)
+    st.subheader("🧮 P/E Ratio Percentiles")
+    symbol = st.text_input("Enter stock symbol (e.g., AAPL)", value="AAPL")
 
-    # if user_pref.password == st.secrets["credentials"]["app_password"]:
-    #     st.success("🔓 Password Correct! Checking live data availability...")
-    #     if can_fetch_data():  # ✅ Check fetch readiness
-    #         with st.spinner("Fetching data OK"):
-    #             pe_p25, pe_p75 = display_pe_percentiles(symbol)
-    #     else:
-    #         st.error("❌ Unable to fetch live data. Falling back to static data.")
-    # else:
-    #     st.warning("🔒 Offline Mode: Available only for online mode.")
+    if user_pref.password == st.secrets["credentials"]["app_password"]:
+        st.success("🔓 Password Correct! Checking live data availability...")
+        if can_fetch_data():  # ✅ Check fetch readiness
+            with st.spinner("Fetching data OK"):
+                pe_p25, pe_p75 = display_pe_percentiles(symbol)
+        else:
+            st.error("❌ Unable to fetch live data. Falling back to static data.")
+    else:
+        st.warning("🔒 Offline Mode: Available only for online mode.")
 
 
 # --- Display Pie Charts ---
