@@ -1,4 +1,4 @@
-#streamlit_portfolio_fetch_app.py
+#streamlit_portfolio_update_app.py
 import streamlit as st
 import pandas as pd
 
