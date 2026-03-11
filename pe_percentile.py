@@ -4,21 +4,35 @@ from fetch_data import valuation_stats
 
 def display_valuation_stats(symbol: str):
     try:
-        months = st.number_input("How many months?", min_value=6, max_value=60, value=36, step=6)
+        months = st.number_input(
+            "How many months?",
+            min_value=6,
+            max_value=60,
+            value=36,
+            step=6
+        )
 
-        # Add button to trigger fetch
-        if st.button("Fetch P/E Percentiles"):
-            years_low, pe_25, pe_75 = valuation_stats(symbol, months)
+        if st.button("Fetch Valuation Stats"):
 
-            if pe_25 is None or pe_75 is None:
-                st.error("Could not compute percentiles.")
-            else:
+            years_low, pe_25, pe_75 = get_valuation_stats(symbol, months)
+
+            if years_low is None:
+                st.error("Could not fetch data.")
+                return None, None, None
+
+            # --- Display ---
+            st.write(f"**Years Low Price:** {years_low:.2f}")
+
+            if pe_25 is not None:
                 st.write(f"**25th Percentile P/E:** {pe_25:.2f}")
+
+            if pe_75 is not None:
                 st.write(f"**75th Percentile P/E:** {pe_75:.2f}")
-            
+
             return years_low, pe_25, pe_75
+
         else:
-            st.info("Click the button to fetch P/E percentiles.")
+            st.info("Click the button to fetch valuation stats.")
             return None, None, None
 
     except Exception:
