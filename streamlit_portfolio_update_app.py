@@ -7,7 +7,7 @@ from load_assets import load_assets_from_google_sheet
 from fetch_yfinance import can_fetch_data
 from portfolio_value import summarize_assets, combine_assets, calculate_portfolio_total, assign_weights
 from user_preferences import get_user_preferences, UserPreference
-from portfolio_view import get_portfolio_df, show_portfolio_table, show_allocation_pie_chart
+from portfolio_view import get_portfolio_df, show_portfolio_table, show_google_sheet_data_table, show_allocation_pie_chart
 from pe_percentile import display_pe_percentiles
 
 
@@ -49,12 +49,15 @@ current_portfolio_mdd= assign_weights(assets, total_thb)
 portfolio_df = get_portfolio_df(assets)
 
 # --- Display Tables ---
-tab1, tab2 = st.tabs(["📋 Portfolio", "💹 Market Data"])
+tab1, tab2, tab3 = st.tabs(["📋 Portfolio", , "📄 Google Sheet Data, "💹 Market Data"])
 with tab1:
     st.subheader("📋 Portfolio Report")
     show_portfolio_table(portfolio_df)
     st.metric("💰 Total Portfolio Value (THB)", f"฿{total_thb:,.0f}")
 with tab2:
+    st.subheader("📄 Google Sheet Data")
+    show_google_sheet_data_table(portfolio_df)
+with tab3:
     st.subheader("💹 Market Data")
     # st.caption("ℹ️ Fetchable data. When using live data mode, copy this data to your Google Sheet to update static data.")
     # show_market_data_table(portfolio_unsum_df)
