@@ -13,7 +13,6 @@ def display_valuation_stats(symbol: str):
         )
 
         if st.button("Fetch Valuation Stats"):
-
             years_low, pe_25, pe_75 = valuation_stats(symbol, months)
             st.write("DEBUG1:", years_low, pe_25, pe_75)
 
@@ -21,14 +20,17 @@ def display_valuation_stats(symbol: str):
                 st.error("Could not fetch data.")
                 return None, None, None
 
-            # --- Display ---
             st.write(f"**Years Low Price:** {years_low:.2f}")
 
             if pe_25 is not None:
                 st.write(f"**25th Percentile P/E:** {pe_25:.2f}")
+            else:
+                st.write("**25th Percentile P/E:** N/A")
 
             if pe_75 is not None:
                 st.write(f"**75th Percentile P/E:** {pe_75:.2f}")
+            else:
+                st.write("**75th Percentile P/E:** N/A")
 
             return years_low, pe_25, pe_75
 
@@ -36,6 +38,7 @@ def display_valuation_stats(symbol: str):
             st.info("Click the button to fetch valuation stats.")
             return None, None, None
 
-    except Exception:
-        st.write("DEBUG2:")
+    except Exception as e:
+        st.error(f"Error: {e}")
+        st.exception(e)
         return None, None, None
