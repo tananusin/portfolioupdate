@@ -1,4 +1,4 @@
-    #streamlit_portfolio_management_app.py
+#streamlit_portfolio_fetch_app.py
 import streamlit as st
 import pandas as pd
 
@@ -18,7 +18,7 @@ from pe_percentile import display_pe_percentiles
 
 # --- Streamlit Page Config ---
 st.set_page_config(page_title="Portfolio Management", layout="centered")
-st.title("🗂️ Portfolio Management")
+st.title("🗂️ Portfolio")
 
 # --- User Preferences ---
 user_pref = get_user_preferences()
