@@ -12,6 +12,7 @@ class AssetData:
     price: Optional[float] = None
     fx_rate: Optional[float] = None
     asset_class: Optional[str] = None
+    mdd: Optional[float] = None
 
     # Portfolio Value Variables
     value_local: Optional[float] = None
