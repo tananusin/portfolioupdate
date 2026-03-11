@@ -5,24 +5,9 @@ from typing import Optional
 
 @dataclass
 class UserPreference:
-    investment_pct: int
-    gold_pct: int
     password: str
     sheet_url: str
-    mdd_speculative_pct: int
-    mdd_growth_pct: int
-    mdd_core_pct: int
 
-    cagr_speculative_pct: Optional[float] = None
-    cagr_growth_pct: Optional[float] = None
-    cagr_core_pct: Optional[float] = None 
-    rebound_speculative_pct: Optional[float] = None
-    rebound_growth_pct: Optional[float] = None
-    rebound_core_pct: Optional[float] = None
-
-    yield_speculative: Optional[float] = None
-    yield_growth: Optional[float] = None
-    yield_core: Optional[float] = None 
 
 
 def convert_to_csv_url(sheet_url: str) -> str:
@@ -60,13 +45,8 @@ def get_user_preferences() -> UserPreference:
 
     # Create UserPreference object
     prefs = UserPreference(
-        investment_pct=investment_pct,
-        gold_pct=gold_pct,
         password=password,
         sheet_url=sheet_url,
-        mdd_speculative_pct=mdd_speculative_pct,
-        mdd_growth_pct=mdd_growth_pct,
-        mdd_core_pct=mdd_core_pct
     )
     
     return prefs
