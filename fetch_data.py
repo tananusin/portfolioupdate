@@ -1,7 +1,7 @@
 # fetch_data.py
 from typing import List
 from asset_data import AssetData
-from fetch_yfinance import fetch_data, get_price, get_fx_to_thb, get_52_week_high, get_52_week_low, get_trailing_pe, get_trailing_dividend_yield
+from fetch_yfinance import fetch_data, get_price, get_fx_to_thb, get_52_week_high, get_52_week_low, get_trailing_pe, get_trailing_dividend_yield, get_valuation_stats
 
 def can_fetch_data() -> bool:
     return fetch_data()
@@ -32,6 +32,9 @@ def enrich_asset(asset: AssetData) -> AssetData:
 
     return asset
 
-
 def enrich_assets(assets: List[AssetData]) -> List[AssetData]:
     return [enrich_asset(asset) for asset in assets]
+
+def valuation_stats(symbol: str, months: int):
+    years_low, pe_25, pe_75 = get_valuation_stats(symbol, months)
+    return years_low, pe_25, pe_7
