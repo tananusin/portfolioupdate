@@ -13,6 +13,8 @@ class AssetData:
     fx_rate: Optional[float] = None
     asset_class: Optional[str] = None
     mdd: Optional[float] = None
+    eps: Optional[float] = None                         # Trailing EPS
+    dps: Optional[float] = None                         # Trailing DPS
     
     # Portfolio Value Variables
     value_local: Optional[float] = None
@@ -42,6 +44,7 @@ class AssetData:
     drop_52w: Optional[float] = None
     gain_52w: Optional[float] = None
     gain_years: Optional[float] = None
+    calmar_ratio: Optional[float] = None
     price_signal: Optional[str] = None
 
     # P/E Signal
