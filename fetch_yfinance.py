@@ -59,6 +59,32 @@ def get_trailing_pe(symbol: str) -> float | None:
     except Exception:
         return None
 
+def get_trailing_eps(symbol: str) -> float | None:
+    """Fetch trailing EPS (Earnings Per Share)."""
+    try:
+        ticker = yf.Ticker(symbol.strip().upper())
+        eps = ticker.info.get("trailingEps")
+
+        if eps is None:
+            return 0.0
+
+        return round(eps, 4)
+    except Exception:
+        return None
+
+def get_trailing_dps(symbol: str) -> float | None:
+    """Fetch trailing DPS (Dividend Per Share)."""
+    try:
+        ticker = yf.Ticker(symbol.strip().upper())
+        dps = ticker.info.get("dividendRate")
+
+        if dps is None:
+            return 0.0
+
+        return round(dps, 4)
+    except Exception:
+        return None
+
 def get_trailing_dividend_yield(symbol: str) -> float | None:
     try:
         ticker = yf.Ticker(symbol.strip().upper())
